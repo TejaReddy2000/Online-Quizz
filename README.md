@@ -1,6 +1,6 @@
-# Online-Quizz
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,16 +8,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-class OnlineTest extends JFrame implements ActionListener 
-{
+class OnlineTest extends JFrame implements ActionListener {
+	
 	private static final long serialVersionUID = 1L;
-        JLabel label;
+
+	JLabel label;
 	JRadioButton radioButton[] = new JRadioButton[5];
 	JButton btnNext, btnBookmark;
 	ButtonGroup bg;
 	int count = 0, current = 0, x = 1, y = 1, now = 0;
 	int m[] = new int[10];
-       // create jFrame with radioButton and JButton
+
+	// create jFrame with radioButton and JButton
 	OnlineTest(String s) {
 		super(s);
 		label = new JLabel();
@@ -48,7 +50,8 @@ class OnlineTest extends JFrame implements ActionListener
 		setVisible(true);
 		setSize(600, 350);
 	}
-        // handle all actions based on event
+
+	// handle all actions based on event
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnNext) {
 			if (check())
@@ -85,7 +88,8 @@ class OnlineTest extends JFrame implements ActionListener
 				current = now;
 			}
 		}
-             if (e.getActionCommand().equals("Result")) {
+
+		if (e.getActionCommand().equals("Result")) {
 			if (check())
 				count = count + 1;
 			current++;
@@ -93,7 +97,8 @@ class OnlineTest extends JFrame implements ActionListener
 			System.exit(0);
 		}
 	}
-       // SET Questions with options
+
+	// SET Questions with options
 	void set() {
 		radioButton[4].setSelected(true);
 		if (current == 0) {
@@ -170,7 +175,8 @@ class OnlineTest extends JFrame implements ActionListener
 		for (int i = 0, j = 0; i <= 90; i += 30, j++)
 			radioButton[j].setBounds(50, 80 + i, 200, 20);
 	}
-        // declare right answers.
+
+	// declare right answers.
 	boolean check() {
 		if (current == 0)
 			return (radioButton[1].isSelected());
@@ -194,6 +200,7 @@ class OnlineTest extends JFrame implements ActionListener
 			return (radioButton[0].isSelected());
 		return false;
 	}
-           public static void main(String s[]) {
+
+	public static void main(String s[]) {
 		new OnlineTest("Online Test App");
 	}
